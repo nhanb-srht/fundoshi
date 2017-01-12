@@ -25,7 +25,9 @@ class Kissmanga(BaseSite):
             'type': 'Manga',
             'keyword': keyword,
         }
-        resp = self._post(url, params=params)
+        resp = self._post(url,
+                          params=params,
+                          headers={'User-Agent': self.user_agent})
 
         # Kissmanga returns manga series and links in xml format
         soup = BeautifulSoup(resp.content, 'html.parser')
